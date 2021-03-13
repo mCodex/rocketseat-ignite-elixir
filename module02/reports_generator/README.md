@@ -1,21 +1,22 @@
-# ReportsGenerator
+# 📋 ReportsGenerator
 
-**TODO: Add description**
+A project that reads a CSV containing dummy information about a delivery system the columns of this CSV are:
 
-## Installation
+- Id of an user
+- Type of food bought
+- The total value spent
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `reports_generator` to your list of dependencies in `mix.exs`:
+Each row indicates an user's purchase.
 
-```elixir
-def deps do
-  [
-    {:reports_generator, "~> 0.1.0"}
-  ]
-end
-```
+The file has 300.000 lines, parses and do some logic such as:
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/reports_generator](https://hexdocs.pm/reports_generator).
+- Sum how much each user spent
+- Counts each type of food frequency
 
+## 👨‍💻 Motivation
+
+This project was built demonstrating the using of:
+
+- Guards
+- Parallelism
+- Streams
