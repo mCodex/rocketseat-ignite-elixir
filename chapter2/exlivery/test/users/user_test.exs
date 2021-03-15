@@ -17,7 +17,7 @@ defmodule Exlivery.Users.UserTest do
     test "when are invalid params, returns an error" do
       response = User.build("Street", "User", "test@test.com", 1_234_566, 22)
 
-      expected_response = {:error, "Invalid parameters"}
+      expected_response = {:error, "Invalid Parameters"}
 
       assert response == expected_response
     end
