@@ -6,12 +6,16 @@ defmodule Exflight.Users.CreateOrUpdate do
   def call(%{name: name, email: email, cpf: cpf}) do
     id = UUID.uuid4()
 
-    {:ok, user} = User.build(id, name, email, cpf)
+    id
+    |> User.build(name, email, cpf)
+    |> save_user()
+  end
 
+  defp save_user({:ok, %User{} = user}) do
     UserAgent.save(user)
 
     {:ok, user.id}
   end
 
-  def call(_user_data), do: {:error, "Invalid user params"}
+  defp save_user({:error, _reason} = error), do: error
 end
