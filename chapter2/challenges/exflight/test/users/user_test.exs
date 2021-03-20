@@ -1,15 +1,12 @@
 defmodule Exflight.Users.UserTest do
   use ExUnit.Case
 
-  alias Exflight.Users.Agent, as: UserAgent
   alias Exflight.Users.User
 
   import Exflight.Factory
 
   describe "build/4" do
     setup do
-      UserAgent.start_link(%{})
-
       user_id = "13c2cc5e-78d5-419d-ae6d-1986c7d45428"
 
       {:ok, user_id: user_id}

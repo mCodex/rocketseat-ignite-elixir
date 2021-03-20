@@ -1,4 +1,20 @@
-# Exflight
+# 🏆 Exflight Challenge
+
+## About
+
+The challenge's main goal was to create a flight booking system which user's can book a flight ticket.
+
+## 🖋 Resolution
+
+I created an Elixir's algorithm that stores user's and booking's data in Agents (to simulate a fake database).
+
+The code is tested using ExMachina's Factory.
+
+## 📚 Libraries:
+
+- Credo
+- ExMachina
+- Coveralls
 
 ## Installation
 
@@ -6,7 +22,7 @@
 mix deps.get
 ```
 
-## Running
+## 🏃‍♂️ Running
 
 First you need to open this project on your terminal and then:
 
