@@ -6,7 +6,7 @@ The challenge's main goal was to create a flight booking system which user's can
 
 ## 🖋 Resolution
 
-I created an Elixir's algorithm that stores user's and booking's data in Agents (to simulate a fake database).
+I created an Elixir's algorithm that stores user's and booking's data in Agents (to simulate a fake database). After that, you can export your data into a report file containing all bookings.
 
 The code is tested using ExMachina's Factory.
 
