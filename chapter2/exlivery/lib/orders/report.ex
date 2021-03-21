@@ -21,7 +21,7 @@ defmodule Exlivery.Orders.Report do
          delivery_address: delivery_address
        }) do
     items_string = Enum.map(items, &item_string/1)
-    "#{cpf}, #{delivery_address}, #{items_string}, #{total_price}\n"
+    "#{cpf}, #{delivery_address}, #{items_string}#{total_price}\n"
   end
 
   defp item_string(%Item{category: category, quantity: quantity, unity_price: unity_price}) do

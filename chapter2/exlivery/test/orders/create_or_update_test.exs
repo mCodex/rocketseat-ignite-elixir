@@ -76,7 +76,7 @@ defmodule Exlivery.Orders.CreateOrUpdateTest do
 
       response = CreateOrUpdate.call(params)
 
-      expected_response = {:error, "Invalid items"}
+      expected_response = {:error, "Invalid Parameters"}
 
       assert response == expected_response
     end
