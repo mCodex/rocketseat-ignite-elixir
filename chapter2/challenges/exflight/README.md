@@ -69,3 +69,11 @@ BookingCreate.call("USER_ID", %{data: "2021-06-25T23:00:00", cidade_origem: "Sã
 ```elixir
 BookingAgent.get("BOOKING_ID")
 ```
+
+### Generate Booking's Report
+
+```elixir
+alias Exflight.Bookings.Report
+
+Report.generate_report("2021-06-25T23:00:00", "2021-06-30T23:00:00", filename // "report.csv")
+```
