@@ -28,3 +28,5 @@ rockelivery-*.tar
 /priv/static/
 
 dbdata/
+
+.DS_STORE
