@@ -19,7 +19,7 @@ defmodule Rockelivery.Users.Update do
 
   defp do_update(user, params) do
     user
-    |> User.changeset(params)
+    |> User.update_changeset(params)
     |> Repo.update()
   end
 end
