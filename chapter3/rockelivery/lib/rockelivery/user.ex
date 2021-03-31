@@ -26,8 +26,8 @@ defmodule Rockelivery.User do
     timestamps()
   end
 
-  def changeset(struct \\ %__MODULE__{}, params) do
-    struct
+  def changeset(params) do
+    %__MODULE__{}
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> validate_length(:password_hash, min: 6)
@@ -35,7 +35,7 @@ defmodule Rockelivery.User do
     |> put_password_hash()
   end
 
-  def update_changeset(struct \\ %__MODULE__{}, params) do
+  def update_changeset(struct, params) do
     struct
     |> cast(params, @update_params)
     |> validate_required(@update_params)
