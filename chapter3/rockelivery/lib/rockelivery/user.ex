@@ -30,7 +30,7 @@ defmodule Rockelivery.User do
     %__MODULE__{}
     |> cast(params, @required_params)
     |> validate_required(@required_params)
-    |> validate_length(:password_hash, min: 6)
+    |> validate_length(:password, min: 6)
     |> handle_changes()
     |> put_password_hash()
   end
