@@ -1,0 +1,6 @@
+{
+    "skip_files": [
+      "test/support",
+      "lib/mealcon_web/channels/user_socket.ex"
+    ]
+  }
