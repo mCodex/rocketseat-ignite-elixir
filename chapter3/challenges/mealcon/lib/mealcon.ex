@@ -1,9 +1,5 @@
 defmodule Mealcon do
-  @moduledoc """
-  Mealcon keeps the contexts that define your domain
-  and business logic.
+  alias Mealcon.Meals.Create, as: MealCreate
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  defdelegate create_meal(params), to: MealCreate, as: :call
 end
