@@ -57,6 +57,90 @@ defmodule RockeliveryWeb.UsersControllerTest do
     end
   end
 
+  describe "show/2" do
+    test "when there is a user with the given id, returns it", %{conn: conn} do
+      id = "80546254-2c97-4338-8acc-3e6305d4b523"
+      insert(:user)
+
+      response =
+        conn
+        |> get(Routes.users_path(conn, :show, id))
+        |> json_response(:ok)
+
+      expected_response = %{
+        "user" => %{
+          "address" => "Stree 1",
+          "age" => 42,
+          "cpf" => "12345678901",
+          "email" => "user@user.com",
+          "id" => "80546254-2c97-4338-8acc-3e6305d4b523",
+          "name" => "User"
+        }
+      }
+
+      assert expected_response == response
+    end
+
+    test "when there is not a user with given id, returns an error", %{conn: conn} do
+      id = "80546254-2c97-4338-8acc-3e6305d4b523"
+
+      response =
+        conn
+        |> get(Routes.users_path(conn, :update, id))
+        |> json_response(:not_found)
+
+      expected_response = %{"message" => "User not found!"}
+
+      assert expected_response == response
+    end
+  end
+
+  describe "update/2" do
+    test "when there is a user with the given id, returns update", %{conn: conn} do
+      id = "80546254-2c97-4338-8acc-3e6305d4b523"
+      insert(:user)
+
+      updated_params = %{
+        name: "Updated User"
+      }
+
+      response =
+        conn
+        |> put(Routes.users_path(conn, :update, id, updated_params))
+        |> json_response(:created)
+
+      expected_response = %{
+        "user" => %{
+          "address" => "Stree 1",
+          "age" => 42,
+          "cpf" => "12345678901",
+          "email" => "user@user.com",
+          "id" => "80546254-2c97-4338-8acc-3e6305d4b523",
+          "name" => "Updated User"
+        }
+      }
+
+      assert expected_response == response
+    end
+
+    test "when there is not a user with given id, returns an error", %{conn: conn} do
+      id = "80546254-2c97-4338-8acc-3e6305d4b523"
+
+      updated_params = %{
+        name: "Updated User"
+      }
+
+      response =
+        conn
+        |> put(Routes.users_path(conn, :update, id, updated_params))
+        |> json_response(:not_found)
+
+      expected_response = %{"message" => "User not found!"}
+
+      assert expected_response == response
+    end
+  end
+
   describe "delete/2" do
     test "when there is a user with the given id, deletes the user", %{conn: conn} do
       id = "80546254-2c97-4338-8acc-3e6305d4b523"
