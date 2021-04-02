@@ -27,6 +27,16 @@ First you need to open this project on your terminal and then:
 mix phx.server
 ```
 
+## Testing
+
+Just run:
+
+```elixir
+mix test
+```
+
+The coverage is over 90%.
+
 ## 🔗 Endpoints
 
 There is a [insomnia.json](./docs/insomnia.json) here which you can import into your Insomnia.
