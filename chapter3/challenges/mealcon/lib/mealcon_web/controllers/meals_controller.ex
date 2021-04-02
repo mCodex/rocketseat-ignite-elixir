@@ -14,4 +14,12 @@ defmodule MealconWeb.MealsController do
       |> render("meal.json", meal: meal)
     end
   end
+
+  def update(conn, params) do
+    with {:ok, %Meal{} = meal} <- Mealcon.update_meal(params) do
+      conn
+      |> put_status(:created)
+      |> render("meal.json", meal: meal)
+    end
+  end
 end

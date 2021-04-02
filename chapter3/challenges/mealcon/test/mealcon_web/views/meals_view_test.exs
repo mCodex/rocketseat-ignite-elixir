@@ -16,7 +16,7 @@ defmodule Mealcon.MealsViewTest do
                calories: 200,
                date: "2021-04-02 19:00",
                description: "A beautiful meal description",
-               id: nil,
+               id: "fe4aa134-d788-4ba4-b251-f557289d6618",
                inserted_at: nil,
                updated_at: nil
              }
