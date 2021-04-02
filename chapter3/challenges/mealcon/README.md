@@ -1,19 +1,70 @@
-# Mealcon
+# 🏆 Mealcon Challenge
 
-To start your Phoenix server:
+## About
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+The challenge's main goal was to create a meal tracker api where you can save/delete/update/show a meal.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Mealcon means meal consumption.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## 📚 Libraries:
 
-## Learn more
+- Phoenix
+- Credo
+- ExMachina
+- Coveralls
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+## Installation
+
+```bash
+mix deps.get
+```
+
+## 🏃‍♂️ Running
+
+First you need to open this project on your terminal and then:
+
+```elixir
+mix phx.server
+```
+
+## 🔗 Endpoints
+
+There is a [insomnia.json](./docs/insomnia.json) here which you can import into your Insomnia.
+
+Base url: http://localhost:4000
+
+### Create
+
+POST `/api/meals`
+
+payload:
+
+```json
+{
+  "description": "A beautiful meal description",
+  "date": "2021-04-02 19:00",
+  "calories": 200
+}
+```
+
+### Update
+
+PUT `/api/meals/MEAL_ID`
+
+payload:
+
+```json
+{
+  "description": "A beautiful meal description",
+  "date": "2021-04-02 19:00",
+  "calories": 200
+}
+```
+
+### Show
+
+GET `/api/meals/MEAL_ID`
+
+### Delete
+
+DELETE `/api/meals/MEAL_ID`
