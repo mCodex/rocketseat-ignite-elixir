@@ -1,0 +1,11 @@
+{
+    "skip_files": [
+      "test/support",
+      "lib/mealcon_web/channels/user_socket.ex",
+      "lib/mealcon_web/endpoint.ex",
+      "lib/mealcon_web/gettext.ex",
+      "lib/mealcon/repo.ex",
+      "lib/mealcon_web.ex",
+      "lib/mealcon_web/views/error_helpers.ex"
+    ]
+  }
