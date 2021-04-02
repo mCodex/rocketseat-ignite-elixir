@@ -21,7 +21,13 @@ mix deps.get
 
 ## 🏃‍♂️ Running
 
-First you need to open this project on your terminal and then:
+First you need to make sure that you have postgres installed locally or if you have docker you can run:
+
+```bash
+docker-compose up -d
+```
+
+And then on your terminal and then:
 
 ```elixir
 mix phx.server
