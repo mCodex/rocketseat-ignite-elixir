@@ -5,8 +5,6 @@ defmodule Rockelivery.Repo.Migrations.CreateOrdersItemsTable do
     create table(:orders_items, primary_key: false) do
       add :order_id, references(:orders, type: :binary_id)
       add :item_id, references(:items, type: :binary_id)
-
-      timestamps()
     end
   end
 end
