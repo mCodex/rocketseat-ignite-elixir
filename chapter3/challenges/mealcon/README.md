@@ -43,11 +43,27 @@ mix test
 
 The coverage is over 90%.
 
-## 🔗 Endpoints
+# 🔗 Endpoints
 
 There is a [insomnia.json](./docs/insomnia.json) here which you can import into your Insomnia.
 
 Base url: http://localhost:4000
+
+## User
+
+POST `/api/users`
+
+payload:
+
+```json
+{
+  "name": "User",
+  "cpf": "12345",
+  "email": "user@user.com"
+}
+```
+
+## Meals
 
 ### Create
 
@@ -59,7 +75,8 @@ payload:
 {
   "description": "A beautiful meal description",
   "date": "2021-04-02 19:00",
-  "calories": 200
+  "calories": 200,
+  "user_id": "c6c95415-5313-481a-9cb6-15b9b0ad1897"
 }
 ```
 
