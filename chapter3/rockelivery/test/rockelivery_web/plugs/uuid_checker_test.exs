@@ -1,11 +1,22 @@
 defmodule RockeliveryWeb.Plugs.UUIDCheckerTest do
   use RockeliveryWeb.ConnCase, async: true
 
-  # alias RockeliveryWeb.Plugs.UUIDChecker
+  import Rockelivery.Factory
+
+  alias RockeliveryWeb.Auth.Guardian
 
   describe "call/1" do
-    test "when uuid is invalid, go ahead", %{conn: conn} do
-      id = "80546254-2c97-4338-8acc-3e6305d4b523"
+    setup %{conn: conn} do
+      user = insert(:user)
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn}
+    end
+
+    test "when uuid is valid, go ahead", %{conn: conn} do
+      id = "c865ca08-eba3-43e3-87c6-af7c95951bc8"
 
       response =
         conn

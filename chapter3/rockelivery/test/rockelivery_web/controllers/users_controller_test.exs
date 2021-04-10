@@ -5,6 +5,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
   import Rockelivery.Factory
 
   alias Rockelivery.ViaCep.ClientMock
+  alias RockeliveryWeb.Auth.Guardian
 
   describe "create/2" do
     test "when all params are valid, creates the user", %{conn: conn} do
@@ -65,9 +66,17 @@ defmodule RockeliveryWeb.UsersControllerTest do
   end
 
   describe "show/2" do
+    setup %{conn: conn} do
+      user = insert(:user)
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn}
+    end
+
     test "when there is a user with the given id, returns it", %{conn: conn} do
       id = "80546254-2c97-4338-8acc-3e6305d4b523"
-      insert(:user)
 
       response =
         conn
@@ -89,7 +98,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
     end
 
     test "when there is not a user with given id, returns an error", %{conn: conn} do
-      id = "80546254-2c97-4338-8acc-3e6305d4b523"
+      id = "c865ca08-eba3-43e3-87c6-af7c95951bc8"
 
       response =
         conn
@@ -103,9 +112,17 @@ defmodule RockeliveryWeb.UsersControllerTest do
   end
 
   describe "update/2" do
+    setup %{conn: conn} do
+      user = insert(:user)
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn}
+    end
+
     test "when there is a user with the given id, returns update", %{conn: conn} do
       id = "80546254-2c97-4338-8acc-3e6305d4b523"
-      insert(:user)
 
       updated_params = %{
         "name" => "Updated User"
@@ -131,7 +148,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
     end
 
     test "when there is not a user with given id, returns an error", %{conn: conn} do
-      id = "80546254-2c97-4338-8acc-3e6305d4b523"
+      id = "c865ca08-eba3-43e3-87c6-af7c95951bc8"
 
       updated_params = %{
         "name" => "Updated User"
@@ -149,9 +166,17 @@ defmodule RockeliveryWeb.UsersControllerTest do
   end
 
   describe "delete/2" do
+    setup %{conn: conn} do
+      user = insert(:user)
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn}
+    end
+
     test "when there is a user with the given id, deletes the user", %{conn: conn} do
       id = "80546254-2c97-4338-8acc-3e6305d4b523"
-      insert(:user)
 
       response =
         conn
