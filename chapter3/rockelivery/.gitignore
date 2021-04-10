@@ -30,3 +30,5 @@ rockelivery-*.tar
 dbdata/
 
 .DS_STORE
+
+report.csv
