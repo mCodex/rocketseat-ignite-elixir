@@ -7,6 +7,8 @@ defmodule GithubrepogetterWeb.Router do
 
   scope "/api", GithubrepogetterWeb do
     pipe_through :api
+
+    get "/repos/:username", ReposController, :show
   end
 
   # Enables LiveDashboard only for development
