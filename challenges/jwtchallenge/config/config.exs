@@ -10,6 +10,18 @@ use Mix.Config
 config :jwtchallenge,
   ecto_repos: [Jwtchallenge.Repo]
 
+config :jwtchallenge, Jwtchallenge.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
+config :jwtchallenge, JwtchallengeWeb.Auth.Guardian,
+  issuer: "jwtchallenge",
+  secret_key: "aMlzjAV4CxqmfaPZqNtvNP18YsjScNfmpC2gEKW8HepBbGHJZg3QoeTLxMT/Xn9c"
+
+config :jwtchallenge, JwtchallengeWeb.Auth.Pipeline,
+  module: JwtchallengeWeb.Auth.Guardian,
+  error_handler: JwtchallengeWeb.Auth.ErrorHandler
+
 # Configures the endpoint
 config :jwtchallenge, JwtchallengeWeb.Endpoint,
   url: [host: "localhost"],

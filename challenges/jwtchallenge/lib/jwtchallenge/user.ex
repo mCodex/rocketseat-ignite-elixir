@@ -18,8 +18,6 @@ defmodule Jwtchallenge.User do
     timestamps()
   end
 
-  def build(changeset), do: apply_action(changeset, :create)
-
   def changeset(params) do
     %__MODULE__{}
     |> cast(params, @required_params)

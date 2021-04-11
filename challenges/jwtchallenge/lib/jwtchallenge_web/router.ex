@@ -7,6 +7,9 @@ defmodule JwtchallengeWeb.Router do
 
   scope "/api", JwtchallengeWeb do
     pipe_through :api
+
+    post "/users", UsersController, :create
+    post "/sign-in", UsersController, :sign_in
   end
 
   # Enables LiveDashboard only for development
