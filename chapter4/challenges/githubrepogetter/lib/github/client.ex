@@ -21,4 +21,8 @@ defmodule Githubrepogetter.Github.Client do
   defp handle_get({:ok, %Env{status: 200, body: body}}) do
     {:ok, body}
   end
+
+  defp handle_get({:ok, %Env{status: 400, body: _body}}) do
+    {:error, %{status: :bad_request, message: "Username not found"}}
+  end
 end

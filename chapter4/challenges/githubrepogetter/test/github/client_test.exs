@@ -49,6 +49,28 @@ defmodule Githubrepogetter.Github.ClientTest do
       assert response == expected_response
     end
 
+    test "should return error when username is invalid", %{bypass: bypass} do
+      username = "invalid_username"
+
+      url = endpoint_url(bypass.port)
+
+      Bypass.expect(bypass, "GET", "/users/#{username}/repos", fn conn ->
+        Conn.resp(conn, 400, '')
+      end)
+
+      response = Client.get_user_repos(url, username)
+
+      expected_response = {
+        :error,
+        %{
+          message: "Username not found",
+          status: :bad_request
+        }
+      }
+
+      assert response == expected_response
+    end
+
     defp endpoint_url(port), do: "http://localhost:#{port}"
   end
 end
