@@ -1,8 +1,6 @@
 defmodule Githubrepogetter.Repos.Get do
-  alias Githubrepogetter.Github.Client
-
   def show(username) do
-    {:ok, response} = Client.get_user_repos(username)
+    {:ok, response} = client().get_user_repos(username)
 
     {:ok,
      response
@@ -28,5 +26,11 @@ defmodule Githubrepogetter.Repos.Get do
       html_url: html_url,
       stargazers_count: stargazers_count
     }
+  end
+
+  defp client do
+    :githubrepogetter
+    |> Application.fetch_env!(__MODULE__)
+    |> Keyword.get(:github_adapter)
   end
 end

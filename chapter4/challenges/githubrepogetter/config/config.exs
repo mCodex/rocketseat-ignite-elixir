@@ -10,6 +10,9 @@ use Mix.Config
 config :githubrepogetter,
   ecto_repos: [Githubrepogetter.Repo]
 
+config :githubrepogetter, Githubrepogetter.Repos.Get,
+  github_adapter: Githubrepogetter.Github.Client
+
 # Configures the endpoint
 config :githubrepogetter, GithubrepogetterWeb.Endpoint,
   url: [host: "localhost"],
